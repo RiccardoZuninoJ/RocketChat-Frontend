@@ -46,13 +46,13 @@ export default function Home() {
         {messages.map((message, index) => {
           if (message.from === socketID) {
             return (
-              <Message msg={message} sent={message.from === socketID}></Message>
+              <Message key={index} msg={message} sent={message.from === socketID}></Message>
 
             )
           }
           else {
             return (
-              <Message msg={message} sent={message.from === socketID}></Message>
+              <Message key={index} msg={message} sent={message.from === socketID}></Message>
             )
           }
         })}
