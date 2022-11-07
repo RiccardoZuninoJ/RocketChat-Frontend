@@ -7,9 +7,9 @@ export default function Message(props) {
     return (
 
         <div className={bg + "row px-3 py-2 rounded shadow my-4"}>
-            <p className="fw-bold">{props.msg.from}</p>
-            <p>{props.msg.text}</p>
-            <small>(Received by server at {props.msg.dateTime})</small>
+            <p className="fw-bold">{props.msg?.from}</p>
+            <p>{props.msg?.text}</p>
+            <small>(Received by server at {props.msg?.dateTime})</small>
         </div>
     )
 }
