@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import io from 'socket.io-client'
-const ENDPOINT = "http://127.0.0.1:4001"
+const ENDPOINT = "https://rocky-journey-09604.herokuapp.com/"
 import { useEffect, useState, useRef } from 'react'
 import Navigation from './components/Navigation'
 import { InputGroup, FormControl, Button, Form } from 'react-bootstrap'
