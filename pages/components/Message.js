@@ -10,7 +10,7 @@ export default function Message(props) {
 
             <p className="fw-bold">{props.msg?.from}</p>
             <p>{props.msg?.text}</p>
-            <small>(Received by server at {props.msg.dateTime})</small>
+            <small>(Received by server at {props.msg?.dateTime})</small>
         </div>
     )
 }
