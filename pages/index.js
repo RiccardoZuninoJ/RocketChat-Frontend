@@ -31,6 +31,7 @@ export default function Home() {
       socket.disconnect()
     }
   }, [])
+  const bottomRef = useRef(null)
 
   const sendMessage = (e) => {
     e.preventDefault()
@@ -38,26 +39,36 @@ export default function Home() {
     messageText.current.value = ''
   }
 
-  return (
-    <div>
-      <Navigation socketID={socketID}></Navigation>
-      <div className="container">
-        <h5>Broadcast Room</h5>
-        {messages.map((message, index) => {
-          if (message.from === socketID) {
-            return (
-              <Message key={index} msg={message} sent={message.from === socketID}></Message>
+  useEffect(() => {
+    bottomRef.current.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
 
-            )
-          }
-          else {
-            return (
-              <Message key={index} msg={message} sent={message.from === socketID}></Message>
-            )
-          }
-        })}
+  return (
+    <main >
+      <Navigation socketID={socketID}></Navigation>
+      <div>
+
+        <div className="mx-auto mb-4" style={{ height: "70vh", overflow: "auto", paddingLeft: '10%', paddingRight: '10%' }} id="messages">
+          <h5>Broadcast Room</h5>
+          <div className="col mb-4" >
+            {messages.map((message, index) => {
+              if (message.from === socketID) {
+                return (
+                  <Message key={index} msg={message} sent={message.from === socketID}></Message>
+                )
+              }
+              else {
+                return (
+                  <Message key={index} msg={message} sent={message.from === socketID}></Message>
+                )
+              }
+            })}
+            <div ref={bottomRef}></div>
+          </div>
+        </div>
       </div>
-      <div fixed="bottom" className="bg-primary fixed-bottom px-4 pt-4 justify-content-center">
+
+      <div fixed="bottom" style={{ maxHeight: "10vh" }} className="bg-primary fixed-bottom px-4 pt-4 pb-4 justify-content-center">
         <Form onSubmit={(e) => sendMessage(e)}>
           <InputGroup>
             <InputGroup.Text id="basic-addon1">
@@ -70,7 +81,6 @@ export default function Home() {
               </svg>
             </InputGroup.Text>
             <FormControl
-              as="textarea"
               ref={messageText}
               placeholder="Message text"
               type='text'
@@ -82,8 +92,7 @@ export default function Home() {
             </Button>
           </InputGroup><br></br>
         </Form>
-        <p className="text-center text-white fw-bold">Built by Riccardo Zunino with ❤️</p>
       </div>
-    </div >
+    </main >
   )
 }
