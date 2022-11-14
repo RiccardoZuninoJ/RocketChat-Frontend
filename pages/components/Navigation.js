@@ -9,7 +9,7 @@ function Navigation(props) {
                 <Navbar.Toggle aria-controls='responsive-navbar-nav' />
                 <Navbar.Collapse id='responsive-navbar-nav' className="justify-content-end">
                     <Navbar.Text>
-                        Socket ID: <a href="#login">{props?.socketID}</a>
+                        Socket ID: {props?.socketID}
                     </Navbar.Text>
                 </Navbar.Collapse>
             </Container>

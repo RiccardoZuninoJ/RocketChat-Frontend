@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import io from 'socket.io-client'
-const ENDPOINT = "https://rocky-journey-09604.herokuapp.com/"
+const ENDPOINT = "http://rocky-journey-09604.herokuapp.com:4000"
 import { useEffect, useState, useRef } from 'react'
 import Navigation from './components/Navigation'
 import { InputGroup, FormControl, Button, Form } from 'react-bootstrap'
@@ -9,6 +9,7 @@ import Message from './components/Message'
 const NodeRSA = require('node-rsa');
 
 export default function SendTo() {
+
 
   const [loading, setLoading] = useState(true)
 
@@ -23,8 +24,6 @@ export default function SendTo() {
   const messageText = useRef(null)
   const pubKeyRef = useRef(null)
   const sendToId = useRef(null)
-
-
 
   useEffect(() => {
     const socket = io(ENDPOINT)
